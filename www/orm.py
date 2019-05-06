@@ -1,7 +1,7 @@
 import asyncio, logging
 import aiomysql
 
-async def create_pool(loop, **kw):#建连接池
+async def create_pool(**kw):#建连接池
     
     '''loop:is an optional event loop instance, asyncio.get_event_loop() is used
     if loop is not specified.'''
@@ -21,7 +21,7 @@ async def create_pool(loop, **kw):#建连接池
         autocommit=kw.get('autocommit', True),#默认自动提交事务，不用手动去提交事务
         maxsize=kw.get('maxsize', 10),
         minsize=kw.get('minsize', 1),
-        loop=loop #loop默认是asyncio.get_event_loop()的loop
+        #loop=loop #loop默认是asyncio.get_event_loop()的loop
 )
     
 def log(sql, args=()):
